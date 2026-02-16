@@ -157,7 +157,7 @@ const ChatRow = memo(
 			<div
 				// kilocode_change: add highlighted className
 				className={cn(
-					`px-[15px] py-[10px] pr-[6px] relative ${highlighted ? "animate-message-highlight" : ""}`,
+					`px-[15px] py-[5px] pr-[6px] relative ${highlighted ? "animate-message-highlight" : ""}`,
 				)}>
 				{showTaskTimeline && <KiloChatRowGutterBar message={message} />}
 				<ChatRowContent {...props} />
@@ -1331,12 +1331,6 @@ export const ChatRowContent = ({
 				case "text":
 					return (
 						<div className="group">
-							<div style={headerStyle}>
-								<MessageCircle className="w-4 shrink-0" aria-label="Speech bubble icon" />
-								<span style={{ fontWeight: "bold" }}>{t("chat:text.rooSaid")}</span>
-								<div style={{ flexGrow: 1 }} />
-								<OpenMarkdownPreviewButton markdown={message.text} />
-							</div>
 							<div className="pl-6">
 								<Markdown markdown={message.text} partial={message.partial} />
 								{message.images && message.images.length > 0 && (
