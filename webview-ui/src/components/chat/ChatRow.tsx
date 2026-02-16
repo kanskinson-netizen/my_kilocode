@@ -58,7 +58,6 @@ import {
 	Eye,
 	FileDiff,
 	ListTree,
-	User,
 	Edit,
 	Trash2,
 	MessageCircleQuestionMark,
@@ -67,7 +66,6 @@ import {
 	PocketKnife,
 	FolderTree,
 	TerminalSquare,
-	MessageCircle,
 	Repeat2,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -1345,14 +1343,10 @@ export const ChatRowContent = ({
 					)
 				case "user_feedback":
 					return (
-						<div className="group">
-							<div style={headerStyle}>
-								<User className="w-4 shrink-0" aria-label="User icon" />
-								<span style={{ fontWeight: "bold" }}>{t("chat:feedback.youSaid")}</span>
-							</div>
+						<div className="group mt-2">
 							<div
 								className={cn(
-									"ml-6 border rounded-sm whitespace-pre-wrap",
+									"border rounded-sm whitespace-pre-wrap",
 									isEditing ? "overflow-visible" : "overflow-hidden", // kilocode_change
 									isEditing
 										? "bg-vscode-editor-background text-vscode-editor-foreground"
