@@ -1,0 +1,72 @@
+﻿diff --git a/webview-ui/src/components/chat/ChatRow.tsx b/webview-ui/src/components/chat/ChatRow.tsx
+index ae9ce1b65f..fa9fedcc94 100644
+--- a/webview-ui/src/components/chat/ChatRow.tsx
++++ b/webview-ui/src/components/chat/ChatRow.tsx
+@@ -58,7 +58,6 @@ import {
+ 	Eye,
+ 	FileDiff,
+ 	ListTree,
+-	User,
+ 	Edit,
+ 	Trash2,
+ 	MessageCircleQuestionMark,
+@@ -67,7 +66,6 @@ import {
+ 	PocketKnife,
+ 	FolderTree,
+ 	TerminalSquare,
+-	MessageCircle,
+ 	Repeat2,
+ } from "lucide-react"
+ import { cn } from "@/lib/utils"
+@@ -157,7 +155,7 @@ const ChatRow = memo(
+ 			<div
+ 				// kilocode_change: add highlighted className
+ 				className={cn(
+-					`px-[15px] py-[10px] pr-[6px] relative ${highlighted ? "animate-message-highlight" : ""}`,
++					`px-[15px] py-[5px] pr-[6px] relative ${highlighted ? "animate-message-highlight" : ""}`,
+ 				)}>
+ 				{showTaskTimeline && <KiloChatRowGutterBar message={message} />}
+ 				<ChatRowContent {...props} />
+@@ -1331,12 +1329,6 @@ export const ChatRowContent = ({
+ 				case "text":
+ 					return (
+ 						<div className="group">
+-							<div style={headerStyle}>
+-								<MessageCircle className="w-4 shrink-0" aria-label="Speech bubble icon" />
+-								<span style={{ fontWeight: "bold" }}>{t("chat:text.rooSaid")}</span>
+-								<div style={{ flexGrow: 1 }} />
+-								<OpenMarkdownPreviewButton markdown={message.text} />
+-							</div>
+ 							<div className="pl-6">
+ 								<Markdown markdown={message.text} partial={message.partial} />
+ 								{message.images && message.images.length > 0 && (
+@@ -1351,14 +1343,10 @@ export const ChatRowContent = ({
+ 					)
+ 				case "user_feedback":
+ 					return (
+-						<div className="group">
+-							<div style={headerStyle}>
+-								<User className="w-4 shrink-0" aria-label="User icon" />
+-								<span style={{ fontWeight: "bold" }}>{t("chat:feedback.youSaid")}</span>
+-							</div>
++						<div className="group mt-2">
+ 							<div
+ 								className={cn(
+-									"ml-6 border rounded-sm whitespace-pre-wrap",
++									"border rounded-sm whitespace-pre-wrap",
+ 									isEditing ? "overflow-visible" : "overflow-hidden", // kilocode_change
+ 									isEditing
+ 										? "bg-vscode-editor-background text-vscode-editor-foreground"
+diff --git a/webview-ui/src/components/common/MarkdownBlock.tsx b/webview-ui/src/components/common/MarkdownBlock.tsx
+index af4623ca37..49c1735fb7 100644
+--- a/webview-ui/src/components/common/MarkdownBlock.tsx
++++ b/webview-ui/src/components/common/MarkdownBlock.tsx
+@@ -120,7 +120,7 @@ const StyledMarkdown = styled.div`
+ 
+ 	p {
+ 		white-space: pre-wrap;
+-		margin: 1em 0 0.25em;
++		margin: 0.25em 0 0.25em;
+ 	}
+ 
+ 	/* Prevent layout shifts during streaming */
